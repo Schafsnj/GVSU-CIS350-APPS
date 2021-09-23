@@ -1,6 +1,6 @@
-Team name:
+Team name:APPS
 
-Team members:
+Team members:Hunter, Jayden, Tim, Eldin
 
 # Introduction
 
@@ -8,15 +8,19 @@ Team members:
 
 # Anticipated Technologies
 
-(What technologies are needed to build this project)
+We will need to be able to write in C#, we will need to use the microsoft .NET framework specifically asp.net, coding in visual studio, we will need a SQL database in the back end to hold the information on the website, and maybe a server
+ to host the website.
 
 # Method/Approach
 
-(What is your estimated "plan of attack" for developing this project)
+We Plan to use agile scrum. Each week we will decide what needs to be completed and from there decide what we want to
+ work on individually. We may use Trello. 
+
 
 # Estimated Timeline
 
-(Figure out what your major milestones for this project will be, including how long you anticipate it *may* take to reach that point)
+2 Week Intervals - Will be broken down into a weekly timeline.
+
 
 # Anticipated Problems
 
