@@ -1,6 +1,6 @@
 # Overview
 
-Paragraph place holder.
+This document is our srs, it shows the functional and not functional requirements for our web application. We focus on account and task management along with communication for our functinal requirements. For non functional requirements we we focus on the same thing bit also the performance of our application.
 
 # Functional Requirements
 
