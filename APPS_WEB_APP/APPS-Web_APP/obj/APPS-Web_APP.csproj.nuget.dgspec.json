@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\APPS-Web_APP.csproj": {}
+    "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\APPS-Web_APP.csproj": {
+    "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\APPS-Web_APP.csproj",
+        "projectUniqueName": "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
         "projectName": "APPS-Web_APP",
-        "projectPath": "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\APPS-Web_APP.csproj",
+        "projectPath": "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
         "packagesPath": "C:\\Users\\Jayden\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\obj\\",
+        "outputPath": "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jayden\\AppData\\Roaming\\NuGet\\NuGet.Config",

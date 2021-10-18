@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "egidiyAy/UtOZRw5pZiD2NXfpuv58Fz2HkmSGneREKWzXijUakU0EyzlPUali5Wm7qQPKkyATcrBlqsKaYInvA==",
+  "dgSpecHash": "WlpSgoDyl6ksRTPU20ZH9d4TkHQiZAoq0N/F+aCTY9W4I7l4+dxYbLrLm5vzxQpn8Mn5SOaWUuLnxqgKdCbPug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jayden\\Downloads\\CIS 350\\TestApp\\APPS-Web_APP\\APPS-Web_APP.csproj",
+  "projectFilePath": "C:\\Users\\Jayden\\Source\\Repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jayden\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Jayden\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
