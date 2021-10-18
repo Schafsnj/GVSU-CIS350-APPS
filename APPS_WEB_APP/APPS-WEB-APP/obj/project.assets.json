@@ -6141,11 +6141,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Jayden\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\hunte\\.nuget\\packages\\": {}
+>>>>>>> 0153dfec74d3c3aa694f0f44fe777759925d0744
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Jayden\\source\\repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-WEB-APP\\APPS-WEB-APP.csproj",
       "projectName": "APPS-WEB-APP",
       "projectPath": "C:\\Users\\Jayden\\source\\repos\\Schafsnj\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-WEB-APP\\APPS-WEB-APP.csproj",
@@ -6154,6 +6159,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\hunte\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-WEB-APP\\APPS-WEB-APP.csproj",
+      "projectName": "APPS-WEB-APP",
+      "projectPath": "C:\\Users\\hunte\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-WEB-APP\\APPS-WEB-APP.csproj",
+      "packagesPath": "C:\\Users\\hunte\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hunte\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\hunte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 0153dfec74d3c3aa694f0f44fe777759925d0744
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6218,7 +6233,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+>>>>>>> 0153dfec74d3c3aa694f0f44fe777759925d0744
       }
     }
   }

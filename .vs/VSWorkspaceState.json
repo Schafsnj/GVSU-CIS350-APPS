@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\APPS_WEB_APP"
   ],
   "SelectedNode": "\\APPS_WEB_APP\\APPS-WEB-APP",
+=======
+    ""
+  ],
+  "SelectedNode": "\\APPS-WEB-APP.sln",
+>>>>>>> 0153dfec74d3c3aa694f0f44fe777759925d0744
   "PreviewInSolutionExplorer": false
 }
