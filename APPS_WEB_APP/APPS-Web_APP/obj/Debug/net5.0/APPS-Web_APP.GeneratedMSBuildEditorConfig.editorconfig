@@ -8,7 +8,11 @@ build_property.IncludeAllContentForSelfExtract =
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = APPS_Web_APP
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\
 =======
 build_property.ProjectDir = C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\
 >>>>>>> 708a7e7cfec72a5e61903d5d701ae835e17b2f41
+=======
+build_property.ProjectDir = C:\Users\Jayden\source\repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\
+>>>>>>> b4569d87cf93edd07320e44cbb3c6b3609c7ab41
