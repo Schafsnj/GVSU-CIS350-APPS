@@ -2,16 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\APPS_WEB_APP",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\bin",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\Debug",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\Debug\\net5.0",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\Release",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\Release\\net5.0",
-    "\\APPS_WEB_APP\\APPS-WEB-APP\\obj\\Release\\net5.0\\ref",
     "\\APPS_WEB_APP\\APPS-Web_APP",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
     "\\APPS_WEB_APP\\APPS-Web_APP\\Models"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Models\\Manager.cs",
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.sln",
   "PreviewInSolutionExplorer": false
 }
