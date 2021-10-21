@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\APPS_WEB_APP",
+<<<<<<< HEAD
     "\\APPS_WEB_APP\\APPS-WEB-APP",
     "\\APPS_WEB_APP\\APPS-WEB-APP\\Pages"
   ],
   "SelectedNode": "\\APPS_WEB_APP\\APPS-WEB-APP\\Pages\\Error.cshtml",
+=======
+    "\\APPS_WEB_APP\\APPS-Web_APP"
+  ],
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.sln",
+>>>>>>> ced842f4f798542cd696e5b272e76f87d124836c
   "PreviewInSolutionExplorer": false
 }
