@@ -47,4 +47,5 @@ This document is our srs, it shows the functional and not functional requirement
 	6. The website shall load each page within 30 seconds with a good connection.
 	7. The SQL Database shall be accessed over the web and not held localy.
 
-
+4. Design
+	1. The website pages shall be displayed in a readable and easy to navigate manner
