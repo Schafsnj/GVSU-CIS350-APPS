@@ -43,6 +43,6 @@ This document is our srs, it shows the functional and not functional requirement
 	4. The app should be able to work on all OS.
 	5. The web app shall be able to handle 100’s of users.
 	6. The website shall load each page within 30 seconds with a good connection.
-	7. The SQL Database shall be over the web and not help localy.
+	7. The SQL Database shall be accessed over the web and not held localy.
 
 
