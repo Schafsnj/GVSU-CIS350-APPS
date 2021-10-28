@@ -8,6 +8,7 @@ This document is our srs, it shows the functional and not functional requirement
 	1. The app shall allow employees and managers to login with a username and password.
 	2. The app shall be able to create new user accounts.
 	3. Employees shall be able to change their passwords.
+	4. Employees shall be promted to enter new passwords twice for verification. 
 
 2. Task Management
 	1. Employees shall be able to see their assigned tasks for the week.
