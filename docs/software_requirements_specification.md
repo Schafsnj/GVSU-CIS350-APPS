@@ -23,7 +23,7 @@ This document is our srs, it shows the functional and not functional requirement
 
 4. General
 	1. The app shall interact with an SQL database to store, update, and retrieve information.
-	2. The app shall contain multiple page views both public (Website homepage/info) and privately only to employees (Task management). 
+	2. The app shall contain multiple page views both public (website homepage/info) and privately only to employees (task management). 
 
 # Non-Functional Requirements
 
