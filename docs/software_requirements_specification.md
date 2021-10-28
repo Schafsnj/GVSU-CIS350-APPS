@@ -49,4 +49,4 @@ This document is our srs, it shows the functional and not functional requirement
 
 4. Design
 	1. The website pages shall be displayed in a readable and easy to navigate manner
-	2. The login page shall not take up the whole screen. 
+	2. The login page shall be a small section in the top right of the home screen.
