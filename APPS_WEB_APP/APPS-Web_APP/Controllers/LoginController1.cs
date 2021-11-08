@@ -1,5 +1,6 @@
 ﻿using APPS_Web_APP.Models;
 using APPS_Web_APP.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace APPS_Web_APP.Controllers
             {
                 if(securityService.checkManager(usermodel))
                 {
+                    HttpContext.Session.SetString("username", usermodel.UserName);
                     return RedirectToAction("Index", "Manager", usermodel);
                 }
                 else
@@ -32,6 +34,7 @@ namespace APPS_Web_APP.Controllers
             }
             else
             {
+                HttpContext.Session.Remove("username");
                 return View("LoginFailure", usermodel);
             }
         }
