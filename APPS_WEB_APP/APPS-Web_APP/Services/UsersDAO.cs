@@ -10,7 +10,8 @@ namespace APPS_Web_APP.Services
     public class UsersDAO
     {
         string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-                       User account = new User();
+        User account = new User();
+        
 
         public bool FindUserByNameAndPassword(User user)
         {
