@@ -11,7 +11,7 @@ namespace APPS_Web_APP.Controllers
     
     public class ManagerController : Controller
     {
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
