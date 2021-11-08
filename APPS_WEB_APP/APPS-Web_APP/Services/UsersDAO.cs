@@ -50,7 +50,7 @@ namespace APPS_Web_APP.Services
 
         public void AddUser(User user)
         {
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) values(@username, @password, @email, @firstname, @lastname)";
+            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -61,6 +61,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 100).Value = user.Email;
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
+                command.Parameters.Add("@role", System.Data.SqlDbType.VarChar, 40).Value = 2;
 
                 try
                 {
