@@ -121,7 +121,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
                 //Checking to see if it worked
                 try
                 {
