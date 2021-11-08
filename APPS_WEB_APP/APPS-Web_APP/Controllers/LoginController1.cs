@@ -22,7 +22,7 @@ namespace APPS_Web_APP.Controllers
             {
                 if(securityService.checkManager(usermodel))
                 {
-                    return RedirectToAction("Index", "Manager");
+                    return RedirectToAction("checkLogin", "Manager", usermodel);
                 }
                 else
                 {
