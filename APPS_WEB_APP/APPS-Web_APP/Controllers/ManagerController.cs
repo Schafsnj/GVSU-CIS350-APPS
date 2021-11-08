@@ -26,6 +26,23 @@ namespace APPS_Web_APP.Controllers
             return View(employees.GetAllEmployees());
         }
 
+        [HttpPost]
+        [CustomAuthorization]
+        public IActionResult Create()
+        {
+ 
+            return View();
+        }
+
+        [CustomAuthorization]
+        public IActionResult AddAccount(User usermodel)
+        {
+            UsersDAO users = new UsersDAO();
+            users.AddUser(usermodel);
+
+            return View("AccountAdded", usermodel);
+        }
+
 
     }
 }
