@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace APPS_Web_APP.Controllers
 {
 
@@ -35,14 +36,14 @@ namespace APPS_Web_APP.Controllers
         }
 
         [CustomAuthorization]
-        public IActionResult AddAccount(User usermodel)
+        public IActionResult AddAccount(User usermodel2)
         {
             UsersDAO users = new UsersDAO();
-            users.AddUser(usermodel);
+            users.AddUser(usermodel2);
 
-            if (users.FindUserByNameAndPassword(usermodel))
+            if (users.FindUserByNameAndPassword(usermodel2))
             {
-                return View("AccountAdded", usermodel);
+                return View("AccountAdded", usermodel2);
             }
             else
             {
