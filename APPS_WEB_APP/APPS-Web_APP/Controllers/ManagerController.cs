@@ -40,7 +40,15 @@ namespace APPS_Web_APP.Controllers
             UsersDAO users = new UsersDAO();
             users.AddUser(usermodel);
 
-            return View("AccountAdded", usermodel);
+            if (users.FindUserByNameAndPassword(usermodel))
+            {
+                return View("AccountAdded", usermodel);
+            }
+            else
+            {
+                return Content("Something Went Wrong");
+            }
+ 
         }
 
 
