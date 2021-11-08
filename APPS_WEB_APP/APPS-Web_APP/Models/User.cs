@@ -35,6 +35,6 @@ namespace APPS_Web_APP.Models
         public string Email { get; set; }
 
 
-        public string Role { get; set; }
+        public int Role { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 100).Value = user.Email;
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
-                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 2;
+                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
 
                 try
                 {
