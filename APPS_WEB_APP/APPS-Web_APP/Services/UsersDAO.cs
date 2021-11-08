@@ -115,7 +115,7 @@ namespace APPS_Web_APP.Services
         public List<User> GetAllEmployees()
         {
             List<User> employees = new List<User>();
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE role = @role";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
 
             using (SqlConnection connection = new SqlConnection(connectionString)) 
             {
