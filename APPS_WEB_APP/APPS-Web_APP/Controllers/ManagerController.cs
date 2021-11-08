@@ -43,7 +43,7 @@ namespace APPS_Web_APP.Controllers
 
             if (users.FindUserByNameAndPassword(usermodel))
             {
-                return View("AccountAdded", usermodel);
+                return View("AddAccount", usermodel);
             }
             else
             {
