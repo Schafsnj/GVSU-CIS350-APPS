@@ -12,17 +12,11 @@ namespace APPS_Web_APP.Controllers
     
     public class ManagerController : Controller
     {
+        [HttpGet]
+        [CustomAuthorization]
         public ActionResult Index(User usermodel)
         {
-            SecurityService securityService = new SecurityService();
-            if (securityService.checkManager(usermodel))
-            {
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("LoginController1", "LoginController1");
-            }
         }
 
 
