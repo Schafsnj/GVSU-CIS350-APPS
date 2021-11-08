@@ -14,14 +14,13 @@ namespace APPS_Web_APP.Controllers
     {
         [HttpGet]
         [CustomAuthorization]
-        public ActionResult Index()
+        public IActionResult Index()
         {
                 return View();
         }
 
-        [HttpPost]
         [CustomAuthorization]
-        public ActionResult EditEmployees()
+        public IActionResult EditEmployees()
         {
             UsersDAO employees = new UsersDAO();
             return View(employees.GetAllEmployees());
