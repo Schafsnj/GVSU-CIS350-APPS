@@ -24,7 +24,7 @@ namespace APPS_Web_APP.Controllers
                 if(securityService.checkManager(usermodel))
                 {
                     HttpContext.Session.SetString("username", usermodel.UserName);
-                    return RedirectToAction("Index", "Manager", usermodel);
+                    return RedirectToAction("Index", "Manager");
                 }
                 else
                 {

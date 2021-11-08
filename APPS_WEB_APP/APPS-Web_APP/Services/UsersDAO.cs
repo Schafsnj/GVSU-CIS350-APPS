@@ -51,7 +51,7 @@ namespace APPS_Web_APP.Services
 
         public void AddUser(User user)
         {
-            user.Role = 1;
+            user.Role = 2;
             string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -110,6 +110,38 @@ namespace APPS_Web_APP.Services
                 }
             }
             return success;
+        }
+
+        public List<User> GetAllEmployees()
+        {
+            List<User> employees = new List<User>;
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE role = @role";
+
+            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    while(reads.Read())
+                    {
+                        employees.Add(new User { Id = (int)reads[0], UserName = (string)reads[1], Password = (string)reads[2], 
+                            Email = (string)reads[3], FirstName = (string)reads[4], LastName = (string)reads[5] });
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+
+            }
+
+            return employees;
         }
     }
 }

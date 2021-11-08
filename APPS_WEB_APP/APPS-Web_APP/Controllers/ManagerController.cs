@@ -14,9 +14,17 @@ namespace APPS_Web_APP.Controllers
     {
         [HttpGet]
         [CustomAuthorization]
-        public ActionResult Index(User usermodel)
+        public ActionResult Index()
         {
                 return View();
+        }
+
+        [HttpPost]
+        [CustomAuthorization]
+        public ActionResult EditEmployees()
+        {
+            UsersDAO employees = new UsersDAO();
+            return View();
         }
 
 
