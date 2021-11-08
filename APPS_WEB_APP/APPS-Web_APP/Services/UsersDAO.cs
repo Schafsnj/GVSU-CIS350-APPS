@@ -76,5 +76,40 @@ namespace APPS_Web_APP.Services
                 }
             }
         }
+
+        public bool checkManager(User user)
+        {
+
+            bool success = false;
+
+
+            //statement to tell database what to do
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE role = @role";
+
+            //Keeps it open only while using the database then closes it
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if (reads.HasRows)
+                    {
+                        success = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+            return success;
+        }
     }
 }

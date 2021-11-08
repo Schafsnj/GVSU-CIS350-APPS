@@ -20,7 +20,7 @@ namespace APPS_Web_APP.Controllers
             SecurityService securityService = new SecurityService();
             if(securityService.IsValid(usermodel))
             {
-                if(usermodel.Role == 1)
+                if(securityService.checkManager(usermodel))
                 {
                     return RedirectToAction("ManagerController");
                 }
