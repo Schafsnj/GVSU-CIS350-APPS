@@ -15,7 +15,7 @@ namespace APPS_Web_APP.Controllers
             return View();
         }
 
-        public IActionResult ProcessLogin(User usermodel)
+        public ActionResult ProcessLogin(User usermodel)
         {
             SecurityService securityService = new SecurityService();
             if(securityService.IsValid(usermodel))
