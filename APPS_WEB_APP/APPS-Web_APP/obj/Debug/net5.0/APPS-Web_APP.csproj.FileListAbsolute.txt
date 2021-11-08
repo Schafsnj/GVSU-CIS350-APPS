@@ -386,3 +386,4 @@ C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\test\Index.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\EditEmployees.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\Create.cshtml.g.cs
+C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\AddAccount.cshtml.g.cs
