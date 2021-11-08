@@ -29,6 +29,8 @@ namespace APPS_Web_APP.Models
 
         [Required]
         public string Email { get; set; }
+
+
         public string Role { get; set; }
     }
 }
