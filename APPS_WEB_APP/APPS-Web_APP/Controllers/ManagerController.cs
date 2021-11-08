@@ -26,7 +26,7 @@ namespace APPS_Web_APP.Controllers
             return View(employees.GetAllEmployees());
         }
 
-        [HttpPost]
+
         [CustomAuthorization]
         public IActionResult Create()
         {
