@@ -18,7 +18,7 @@ namespace APPS_Web_APP.Controllers
         public IActionResult AddAccount(User usermodel)
         {
             SecurityService securityService = new SecurityService();
-            usermodel.Role = 1;
+           
             securityService.AddUser(usermodel);
             return View("AccountAdded", usermodel);
         }
