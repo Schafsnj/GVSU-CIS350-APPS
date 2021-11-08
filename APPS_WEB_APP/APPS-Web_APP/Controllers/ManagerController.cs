@@ -24,7 +24,7 @@ namespace APPS_Web_APP.Controllers
         public ActionResult EditEmployees()
         {
             UsersDAO employees = new UsersDAO();
-            return View();
+            return View(employees.GetAllEmployees());
         }
 
 
