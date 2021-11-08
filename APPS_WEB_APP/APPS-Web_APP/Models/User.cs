@@ -13,10 +13,13 @@ namespace APPS_Web_APP.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(10, MinimumLength =4)]
+
         [DisplayName("Username")]
         public string UserName { get; set; }
 
         [Required]
+        [StringLength(20, MinimumLength =9)]
         public string Password { get; set; }
 
         [Required]
@@ -28,6 +31,7 @@ namespace APPS_Web_APP.Models
         public string LastName { get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
 
