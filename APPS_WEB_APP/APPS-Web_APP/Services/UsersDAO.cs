@@ -49,6 +49,29 @@ namespace APPS_Web_APP.Services
             return success;
         }
 
+        public void Delete(User usermodel)
+        {
+            string sqlStatement = "DELETE FROM dbo.Users Where Id = @Id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                //Adding parameter
+                command.Parameters.AddWithValue("@Id", usermodel.Id);
+   
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+        }
+
         public void AddUser(User user)
         {
             user.Role = 2;
