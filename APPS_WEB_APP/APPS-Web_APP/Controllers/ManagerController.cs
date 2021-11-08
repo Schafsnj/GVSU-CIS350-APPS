@@ -35,15 +35,15 @@ namespace APPS_Web_APP.Controllers
             return View();
         }
 
-        [CustomAuthorization]
-        public IActionResult AddAccount(User usermodel2)
+        //[CustomAuthorization]
+        public IActionResult AddAccount(User usermodel)
         {
             UsersDAO users = new UsersDAO();
-            users.AddUser(usermodel2);
+            users.AddUser(usermodel);
 
-            if (users.FindUserByNameAndPassword(usermodel2))
+            if (users.FindUserByNameAndPassword(usermodel))
             {
-                return View("AccountAdded", usermodel2);
+                return View("AccountAdded", usermodel);
             }
             else
             {
