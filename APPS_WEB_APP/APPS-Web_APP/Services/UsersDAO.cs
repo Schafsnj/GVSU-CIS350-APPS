@@ -51,8 +51,8 @@ namespace APPS_Web_APP.Services
 
         public void Delete(int Id)
         {
-            int newId = -1;
-            string sqlStatement = "DELETE FROM dbo.Users Where Id = @Id";
+         
+            string sqlStatement = "DELETE FROM dbo.Users WHERE Id = @Id";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -64,7 +64,7 @@ namespace APPS_Web_APP.Services
                 try
                 {
                     connection.Open();
-                    newId = Convert.ToInt32(command.ExecuteScalar());
+                    command.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
