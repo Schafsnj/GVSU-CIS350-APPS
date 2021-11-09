@@ -27,7 +27,7 @@ namespace APPS_Web_APP
 
             services.AddSession(option =>
             {
-                option.IdleTimeout = TimeSpan.FromSeconds(15);
+                option.IdleTimeout = TimeSpan.FromSeconds(300);
                 option.Cookie.HttpOnly = true;
                 option.Cookie.IsEssential = true;
             });

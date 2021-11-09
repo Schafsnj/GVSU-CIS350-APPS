@@ -35,7 +35,7 @@ namespace APPS_Web_APP.Controllers
             return View();
         }
 
-        //[CustomAuthorization]
+        [CustomAuthorization]
         public IActionResult AddAccount(User usermodel)
         {
             UsersDAO users = new UsersDAO();
