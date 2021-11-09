@@ -53,11 +53,12 @@ namespace APPS_Web_APP.Controllers
         }
 
         [CustomAuthorization]
-        public IActionResult Delete(User usermodel)
+        public IActionResult Delete(int Id)
         {
             UsersDAO user = new UsersDAO();
-            user.Delete(usermodel);
-            return View(user.GetAllEmployees());
+            
+            user.Delete(Id);
+            return View("EditEmployees");
         }
 
 

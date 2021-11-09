@@ -49,21 +49,22 @@ namespace APPS_Web_APP.Services
             return success;
         }
 
-        public void Delete(User usermodel)
+        public void Delete(int Id)
         {
+            int newId = -1;
             string sqlStatement = "DELETE FROM dbo.Users Where Id = @Id";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
 
                 //Adding parameter
-                command.Parameters.AddWithValue("@Id", usermodel.Id);
+                command.Parameters.AddWithValue("@Id", Id);
    
 
                 try
                 {
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    newId = Convert.ToInt32(command.ExecuteScalar());
                 }
                 catch (SqlException e)
                 {
