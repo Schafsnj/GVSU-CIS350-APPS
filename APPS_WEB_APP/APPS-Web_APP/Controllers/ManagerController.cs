@@ -58,7 +58,7 @@ namespace APPS_Web_APP.Controllers
             UsersDAO user = new UsersDAO();
             
             user.Delete(Id);
-            return View("EditEmployees");
+            return View("EditEmployees", user.GetAllEmployees());
         }
 
 
