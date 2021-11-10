@@ -8,6 +8,7 @@ This document is our srs, it shows the functional and not functional requirement
 	1. The app shall allow employees and managers to login with a username and password.
 	2. The app shall be able to create new user accounts.
 	3. Employees shall be able to change their passwords.
+	4. Employees shall be promted to enter new passwords twice for verification. 
 
 2. Task Management
 	1. Employees shall be able to see their assigned tasks for the week.
@@ -23,6 +24,8 @@ This document is our srs, it shows the functional and not functional requirement
 
 4. General
 	1. The app shall interact with an SQL database to store, update, and retrieve information.
+	2. The app shall contain multiple page views both public (website homepage/info) and privately only to employees (task management). 
+	3. Users shall be able to select between light and dark mode. 
 
 # Non-Functional Requirements
 
@@ -43,5 +46,8 @@ This document is our srs, it shows the functional and not functional requirement
 	4. The app should be able to work on all OS.
 	5. The web app shall be able to handle 100’s of users.
 	6. The website shall load each page within 30 seconds with a good connection.
+	7. The SQL Database shall be accessed over the web and not held localy.
 
-
+4. Design
+	1. The website pages shall be displayed in a readable and easy to navigate manner
+	2. The login page shall be a small section in the top right of the home screen.

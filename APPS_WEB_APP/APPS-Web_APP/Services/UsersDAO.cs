@@ -10,7 +10,8 @@ namespace APPS_Web_APP.Services
     public class UsersDAO
     {
         string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-                       User account = new User();
+        User account = new User();
+        
 
         public bool FindUserByNameAndPassword(User user)
         {
@@ -48,9 +49,34 @@ namespace APPS_Web_APP.Services
             return success;
         }
 
+        public void Delete(int Id)
+        {
+         
+            string sqlStatement = "DELETE FROM dbo.Users WHERE Id = @Id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                //Adding parameter
+                command.Parameters.AddWithValue("@Id", Id);
+   
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+        }
+
         public void AddUser(User user)
         {
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) values(@username, @password, @email, @firstname, @lastname)";
+            user.Role = 2;
+            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -61,6 +87,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 100).Value = user.Email;
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
+                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
 
                 try
                 {
@@ -72,6 +99,73 @@ namespace APPS_Web_APP.Services
                     Console.Write(e.Message);
                 }
             }
+        }
+
+        public bool checkManager(User user)
+        {
+
+            bool success = false;
+
+
+            //statement to tell database what to do
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE role = @role";
+
+            //Keeps it open only while using the database then closes it
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if (reads.HasRows)
+                    {
+                        success = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+            return success;
+        }
+
+        public List<User> GetAllEmployees()
+        {
+            List<User> employees = new List<User>();
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
+
+            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    while(reads.Read())
+                    {
+                        employees.Add(new User { Id = (int)reads[0], UserName = (string)reads[1], Password = (string)reads[2], 
+                            Email = (string)reads[3], FirstName = (string)reads[4], LastName = (string)reads[5] });
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+
+            }
+
+            return employees;
         }
     }
 }

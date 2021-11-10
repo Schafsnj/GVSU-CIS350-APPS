@@ -1,6 +1,6 @@
 ﻿@model APPS_Web_APP.Models.User
 
-<h4>Please Create a User</h4>
+<h4>Input User Information Below</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -32,8 +32,9 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Add User" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

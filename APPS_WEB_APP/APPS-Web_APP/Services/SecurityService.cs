@@ -26,7 +26,12 @@ namespace APPS_Web_APP.Services
             usersDAO.AddUser(user);
         }
 
+        public bool checkManager(User user)
+        {
+           return usersDAO.checkManager(user);
+        }
 
-     
+
+
     }
 }
