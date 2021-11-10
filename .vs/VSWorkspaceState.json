@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\APPS_WEB_APP",
-    "\\APPS_WEB_APP\\APPS-Web_APP",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Models"
+    ""
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.sln",
+  "SelectedNode": "\\APPS-Web_APP.sln",
   "PreviewInSolutionExplorer": false
 }
