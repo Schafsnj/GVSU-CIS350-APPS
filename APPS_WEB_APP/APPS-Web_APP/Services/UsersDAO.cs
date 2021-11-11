@@ -20,36 +20,9 @@ namespace APPS_Web_APP.Services
         public bool FindUserByNameAndPassword(User user)
         {
 
-            /*
-            bool success = false;
 
-            //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username AND password = @password";
 
-            //Keeps it open only while using the database then closes it
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                //Creates the new command
-                SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
-
-                //Checking to see if it worked
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reads = command.ExecuteReader();
-
-                    if (reads.HasRows)
-                    {
-                        success = true;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message);
-                } */
-                
+            user.UserName = user.UserName.ToLower();
                 bool success = false;
                 //Creating list to store user passwords
                 List<String> passwords = null;
@@ -130,6 +103,7 @@ namespace APPS_Web_APP.Services
         {
      
             user.Password = hashPass(user.Password);
+            user.UserName = user.UserName.ToLower();
             user.Role = 2;
             string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
