@@ -19,6 +19,8 @@ namespace APPS_Web_APP.Services
 
         public bool FindUserByNameAndPassword(User user)
         {
+
+            /*
             bool success = false;
 
             //statement to tell database what to do
@@ -46,8 +48,8 @@ namespace APPS_Web_APP.Services
                 catch (Exception e)
                 {
                     Console.Write(e.Message);
-                }
-                /*
+                } */
+                
                 bool success = false;
                 //Creating list to store user salts
                 List<String> passwords = null;
@@ -90,13 +92,9 @@ namespace APPS_Web_APP.Services
                 {
                     for(int i = 0; i < passwords.Count; i++) 
                     {
-                        if(passwords[i] == user.Password)
-                        {
-                            success = true;
-                        }
-                        //success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
+  
+                        success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
                     }
-                */
                 }
                   
                 return success;
@@ -199,7 +197,7 @@ namespace APPS_Web_APP.Services
         public List<User> GetAllEmployees()
         {
             List<User> employees = new List<User>();
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 1";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
 
             using (SqlConnection connection = new SqlConnection(connectionString)) 
             {
