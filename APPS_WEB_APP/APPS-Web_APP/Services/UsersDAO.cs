@@ -226,6 +226,7 @@ namespace APPS_Web_APP.Services
                             Email = (string)reads[3],
                             FirstName = (string)reads[4],
                             LastName = (string)reads[5],
+                            Role = (int)reads[6],
                             Salt = (string)reads[7]
                         };
 
