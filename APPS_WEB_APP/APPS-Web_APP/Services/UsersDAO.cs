@@ -19,8 +19,8 @@ namespace APPS_Web_APP.Services
 
             bool success = false;
 
-            string salt = getSalt(user.UserName);
-            user.Password = hashPass(user.Password, salt);
+           // string salt = getSalt(user.UserName);
+            //user.Password = hashPass(user.Password, salt);
 
             
             //statement to tell database what to do
@@ -81,7 +81,7 @@ namespace APPS_Web_APP.Services
         {
             user.Salt = generateSalt();
             user.Password = hashPass(user.Password, user.Salt);
-            user.Role = 2;
+            user.Role = 1;
             string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE, SALT) values(@username, @password, @email, @firstname, @lastname, @role, @salt)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -215,12 +215,12 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                  //  while (reads.Read())
-                    //{
+                    while (reads.Read())
+                    {
 
                         salt = (string)reads[7];
                        
-                   // }
+                    }
                 }
                 catch (Exception e)
                 {
