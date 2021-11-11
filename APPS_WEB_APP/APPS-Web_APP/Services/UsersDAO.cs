@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Web.Helpers;
 
 namespace APPS_Web_APP.Services
 {
@@ -177,22 +178,35 @@ namespace APPS_Web_APP.Services
 
         public String generateSalt()
         {
+
+            /*
             int size = 350;
             var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
             var buff = new byte[size];
             rng.GetBytes(buff);
             return Convert.ToBase64String(buff);
+            
+            */
+
+            string salt = Crypto.GenerateSalt();
+            return salt;
         }
 
         //Generates SHA256 Hash
         public string hashPass(string userPass, string salt)
         {
+            /*
             byte[] password = System.Text.Encoding.UTF8.GetBytes(userPass + salt);
 
             System.Security.Cryptography.SHA256Managed hashed = new System.Security.Cryptography.SHA256Managed();
             byte[] hashedPass = hashed.ComputeHash(password);
 
             return Convert.ToBase64String(hashedPass);
+
+            */
+
+            string hashedPass = Crypto.HashPassword(userPass + salt);
+            return hashedPass;
         }
 
         //Gets salt from username to checkpasswords
