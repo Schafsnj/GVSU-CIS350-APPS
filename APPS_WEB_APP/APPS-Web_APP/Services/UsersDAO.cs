@@ -32,7 +32,7 @@ namespace APPS_Web_APP.Services
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
 
                 //Checking to see if it worked
                 try
@@ -89,12 +89,12 @@ namespace APPS_Web_APP.Services
 
                 //Adding parameter
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 100).Value = user.Email;
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
                 command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
-                command.Parameters.Add("@salt", System.Data.SqlDbType.VarChar, 40).Value = user.Salt;
+                command.Parameters.Add("@salt", System.Data.SqlDbType.VarChar, 100).Value = user.Salt;
 
                 try
                 {
@@ -207,7 +207,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user;
+                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 100).Value = user;
 
                 //Checking to see if it worked
                 try
