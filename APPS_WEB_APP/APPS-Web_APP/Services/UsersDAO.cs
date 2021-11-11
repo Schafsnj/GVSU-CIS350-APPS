@@ -51,7 +51,7 @@ namespace APPS_Web_APP.Services
                 } */
                 
                 bool success = false;
-                //Creating list to store user salts
+                //Creating list to store user passwords
                 List<String> passwords = null;
 
 
