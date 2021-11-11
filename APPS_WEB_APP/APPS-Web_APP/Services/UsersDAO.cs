@@ -19,6 +19,9 @@ namespace APPS_Web_APP.Services
 
             bool success = false;
 
+            string salt = getSalt(user.UserName);
+            user.Password = hashPass(user.UserName, salt);
+
             
             //statement to tell database what to do
             string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username AND password = @password";
@@ -149,7 +152,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+       
                 //Checking to see if it worked
                 try
                 {
@@ -190,6 +193,40 @@ namespace APPS_Web_APP.Services
             byte[] hashedPass = hashed.ComputeHash(password);
 
             return Convert.ToBase64String(hashedPass);
+        }
+
+        //Gets salt from username to checkpasswords
+        public string getSalt(string user)
+        {
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username";
+            string salt = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    while (reads.Read())
+                    {
+
+                        salt = (string)reads[7];
+                       
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+
+            }
+
+            return salt;
         }
     }
 }
