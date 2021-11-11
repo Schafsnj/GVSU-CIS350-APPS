@@ -22,7 +22,7 @@ namespace APPS_Web_APP.Services
 
 
 
-            user.UserName = user.UserName.ToLower();
+                user.UserName = user.UserName.ToLower();
                 bool success = false;
                 //Creating list to store user passwords
                 List<String> passwords = null;
