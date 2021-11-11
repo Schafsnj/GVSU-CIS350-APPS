@@ -204,8 +204,8 @@ namespace APPS_Web_APP.Services
             return Convert.ToBase64String(hashedPass);
 
             */
-
-            string hashedPass = Crypto.HashPassword(userPass + salt);
+            string password = userPass + salt;
+            string hashedPass = Crypto.HashPassword(password);
             return hashedPass;
         }
 
