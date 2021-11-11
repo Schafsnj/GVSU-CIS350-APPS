@@ -207,7 +207,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 100).Value = user;
+                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user;
 
                 //Checking to see if it worked
                 try
