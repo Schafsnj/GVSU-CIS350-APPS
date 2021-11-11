@@ -13,19 +13,20 @@ namespace APPS_Web_APP.Services
     {
         string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         User account = new User();
+
+
         
 
         public bool FindUserByNameAndPassword(User user)
         {
 
             bool success = false;
-
-           string salt = getSalt(user.UserName);
-           user.Password = hashPass(user.Password, salt);
-
-            
+            //Creating list to store user salts
+            List<String> passwords = null;
+       
+           
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username AND password = @password";
+            string sqlStatement = "SELECT PASSWORD SALT FROM dbo.Users WHERE USERNAME = @username";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -33,7 +34,6 @@ namespace APPS_Web_APP.Services
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
 
                 //Checking to see if it worked
                 try
@@ -41,14 +41,27 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    if(reads.HasRows)
+                    while(reads.HasRows && reads.Read())
                     {
-                        success = true;
+                        if(passwords == null) //Initializing list of salts and usernames
+                        {
+                            passwords = new List<String>();
+                        }
+
+                        String password = reads.GetString(reads.GetOrdinal("PASSWORD"));
+                        passwords.Add(password);
                     }
                 }
                 catch(Exception e)
                 {
                     Console.Write(e.Message);
+                }
+            }
+            if(passwords != null)
+            {
+                for(int i = 0; i < passwords.Count; i++) 
+                {
+                    success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
                 }
             }
             return success;
@@ -75,15 +88,16 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
             }
         }
 
         public void AddUser(User user)
         {
-            user.Salt = generateSalt();
-            user.Password = hashPass(user.Password, user.Salt);
+     
+            user.Password = hashPass(user.Password);
             user.Role = 1;
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE, SALT) values(@username, @password, @email, @firstname, @lastname, @role, @salt)";
+            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -95,7 +109,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
                 command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
-                command.Parameters.Add("@salt", System.Data.SqlDbType.VarChar, 100).Value = user.Salt;
+   
 
                 try
                 {
@@ -106,6 +120,7 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
             }
         }
 
@@ -140,7 +155,9 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
             }
+           
             return success;
         }
 
@@ -170,81 +187,22 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
 
             }
 
             return employees;
         }
 
-        public String generateSalt()
-        {
-
-            /*
-            int size = 350;
-            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            var buff = new byte[size];
-            rng.GetBytes(buff);
-            return Convert.ToBase64String(buff);
-            
-            */
-
-            string salt = Crypto.GenerateSalt();
-            return salt;
-        }
 
         //Generates SHA256 Hash
-        public string hashPass(string userPass, string salt)
+        public string hashPass(string userPass)
         {
-            /*
-            byte[] password = System.Text.Encoding.UTF8.GetBytes(userPass + salt);
 
-            System.Security.Cryptography.SHA256Managed hashed = new System.Security.Cryptography.SHA256Managed();
-            byte[] hashedPass = hashed.ComputeHash(password);
-
-            return Convert.ToBase64String(hashedPass);
-
-            */
-            string password = userPass + salt;
+            string password = userPass;
             string hashedPass = Crypto.HashPassword(password);
             return hashedPass;
         }
 
-        //Gets salt from username to checkpasswords
-        public string getSalt(string user)
-        {
-            string sqlStatement = "SELECT SALT FROM dbo.Users WHERE USERNAME = @username";
-            string salt = "";
-
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                //Creates the new command
-                SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user;
-
-                //Checking to see if it worked
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reads = command.ExecuteReader();
-
-                   if(reads.Read())
-                    {
-
-                        salt = reads["SALT"].ToString();
-
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message);
-                }
-
-            }
-
-            return salt;
-        }
     }
 }

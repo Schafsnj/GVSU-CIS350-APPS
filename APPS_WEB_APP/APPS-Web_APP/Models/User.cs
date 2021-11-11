@@ -36,6 +36,6 @@ namespace APPS_Web_APP.Models
 
 
         public int Role { get; set; }
-        public string Salt { get; set; }
+ 
     }
 }
