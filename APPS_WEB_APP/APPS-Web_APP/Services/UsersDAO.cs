@@ -198,7 +198,7 @@ namespace APPS_Web_APP.Services
         //Gets salt from username to checkpasswords
         public string getSalt(string user)
         {
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT SALT FROM dbo.Users WHERE USERNAME = @username";
             string salt = "";
 
         
