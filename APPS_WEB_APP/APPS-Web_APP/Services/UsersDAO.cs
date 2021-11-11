@@ -61,7 +61,11 @@ namespace APPS_Web_APP.Services
             {
                 for(int i = 0; i < passwords.Count; i++) 
                 {
-                    success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
+                    if(passwords[i] == user.Password)
+                    {
+                        success = true;
+                    }
+                    //success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
                 }
             }
             return success;
