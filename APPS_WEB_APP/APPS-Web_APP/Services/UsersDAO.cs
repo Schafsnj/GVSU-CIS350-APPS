@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace APPS_Web_APP.Services
 {
@@ -75,8 +76,10 @@ namespace APPS_Web_APP.Services
 
         public void AddUser(User user)
         {
+            user.Salt = generateSalt();
+            user.Password = hashPass(user.Password, user.Salt);
             user.Role = 2;
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
+            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE, SALT) values(@username, @password, @email, @firstname, @lastname, @role, @salt)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -88,6 +91,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
                 command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
+                command.Parameters.Add("@salt", System.Data.SqlDbType.VarChar, 40).Value = user.Salt;
 
                 try
                 {
@@ -166,6 +170,26 @@ namespace APPS_Web_APP.Services
             }
 
             return employees;
+        }
+
+        public String generateSalt()
+        {
+            int size = 350;
+            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            var buff = new byte[size];
+            rng.GetBytes(buff);
+            return Convert.ToBase64String(buff);
+        }
+
+        //Generates SHA256 Hash
+        public string hashPass(string userPass, string salt)
+        {
+            byte[] password = System.Text.Encoding.UTF8.GetBytes(userPass + salt);
+
+            System.Security.Cryptography.SHA256Managed hashed = new System.Security.Cryptography.SHA256Managed();
+            byte[] hashedPass = hashed.ComputeHash(password);
+
+            return Convert.ToBase64String(hashedPass);
         }
     }
 }
