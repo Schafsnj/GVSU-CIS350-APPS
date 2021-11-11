@@ -198,13 +198,16 @@ namespace APPS_Web_APP.Services
         //Gets salt from username to checkpasswords
         public string getSalt(string user)
         {
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
             string salt = "";
+
+        
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user;
 
                 //Checking to see if it worked
                 try
@@ -212,11 +215,12 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-
+                    while (reads.Read())
+                    {
 
                         salt = (string)reads[7];
                        
-
+                    }
                 }
                 catch (Exception e)
                 {
