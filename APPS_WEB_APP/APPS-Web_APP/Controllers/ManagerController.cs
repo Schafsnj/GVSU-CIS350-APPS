@@ -41,14 +41,9 @@ namespace APPS_Web_APP.Controllers
             UsersDAO users = new UsersDAO();
             users.AddUser(usermodel);
 
-            if (users.FindUserByNameAndPassword(usermodel))
-            {
-                return View("AddAccount", usermodel);
-            }
-            else
-            {
-                return Content("Something Went Wrong");
-            }
+
+            return View("AddAccount", usermodel);
+
  
         }
 
