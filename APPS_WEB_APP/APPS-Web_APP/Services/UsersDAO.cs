@@ -219,8 +219,10 @@ namespace APPS_Web_APP.Services
                     {
 
                        string salt = (string)reads[7];
-                       
+                        return salt;
+
                     }
+                
                 }
                 catch (Exception e)
                 {
@@ -228,8 +230,8 @@ namespace APPS_Web_APP.Services
                 }
 
             }
-
-            return salt;
+            return ("");
+            
         }
     }
 }
