@@ -96,7 +96,7 @@ namespace APPS_Web_APP.Services
                         success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
          
                     }
-            }
+                }
                   
                 return success;
         }
