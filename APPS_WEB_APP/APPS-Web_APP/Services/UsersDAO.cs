@@ -215,12 +215,12 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    while (reads.Read())
-                    {
+                  //  while (reads.Read())
+                    //{
 
                         salt = (string)reads[7];
                        
-                    }
+                   // }
                 }
                 catch (Exception e)
                 {
