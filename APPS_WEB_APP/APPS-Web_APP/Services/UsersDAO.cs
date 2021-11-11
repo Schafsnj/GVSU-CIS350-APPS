@@ -56,7 +56,7 @@ namespace APPS_Web_APP.Services
 
 
                 //statement to tell database what to do
-                string sqlStatement = "SELECT PASSWORD SALT FROM dbo.Users WHERE USERNAME = @username";
+                string sqlStatement = "SELECT PASSWORD FROM dbo.Users WHERE USERNAME = @username";
 
                 //Keeps it open only while using the database then closes it
                 using (SqlConnection connection = new SqlConnection(connectionString))
