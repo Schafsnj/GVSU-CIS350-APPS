@@ -199,7 +199,7 @@ namespace APPS_Web_APP.Services
         public string getSalt(string user)
         {
             string sqlStatement = "SELECT SALT FROM dbo.Users WHERE USERNAME = @username";
-            string salt = "";
+            
 
         
 
@@ -215,12 +215,12 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    //while (reads.Read())
-                    //{
+                    while (reads.Read())
+                    {
 
-                        salt = (string)reads[7];
+                       string salt = (string)reads[7];
                        
-                    //}
+                    }
                 }
                 catch (Exception e)
                 {
