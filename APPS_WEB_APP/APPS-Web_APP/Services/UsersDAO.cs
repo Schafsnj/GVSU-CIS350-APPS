@@ -19,14 +19,10 @@ namespace APPS_Web_APP.Services
 
         public bool FindUserByNameAndPassword(User user)
         {
-
             bool success = false;
-            //Creating list to store user salts
-            List<String> passwords = null;
-       
-           
+
             //statement to tell database what to do
-            string sqlStatement = "SELECT PASSWORD SALT FROM dbo.Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username AND password = @password";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -34,6 +30,7 @@ namespace APPS_Web_APP.Services
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
+                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
 
                 //Checking to see if it worked
                 try
@@ -41,34 +38,68 @@ namespace APPS_Web_APP.Services
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    while(reads.HasRows && reads.Read())
-                    {
-                        if(passwords == null) //Initializing list of salts and usernames
-                        {
-                            passwords = new List<String>();
-                        }
-
-                        String password = reads.GetString(reads.GetOrdinal("PASSWORD"));
-                        passwords.Add(password);
-                    }
-                }
-                catch(Exception e)
-                {
-                    Console.Write(e.Message);
-                }
-            }
-            if(passwords != null)
-            {
-                for(int i = 0; i < passwords.Count; i++) 
-                {
-                    if(passwords[i] == user.Password)
+                    if (reads.HasRows)
                     {
                         success = true;
                     }
-                    //success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
                 }
-            }
-            return success;
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                /*
+                bool success = false;
+                //Creating list to store user salts
+                List<String> passwords = null;
+
+
+                //statement to tell database what to do
+                string sqlStatement = "SELECT PASSWORD SALT FROM dbo.Users WHERE USERNAME = @username";
+
+                //Keeps it open only while using the database then closes it
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    //Creates the new command
+                    SqlCommand command = new SqlCommand(sqlStatement, connection);
+                    command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
+
+
+                    //Checking to see if it worked
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reads = command.ExecuteReader();
+
+                        while(reads.HasRows && reads.Read())
+                        {
+                            if(passwords == null) //Initializing list of salts and usernames
+                            {
+                                passwords = new List<String>();
+                            }
+
+                            String password = reads.GetString(reads.GetOrdinal("PASSWORD"));
+                            passwords.Add(password);
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        Console.Write(e.Message);
+                    }
+                }
+                if(passwords != null)
+                {
+                    for(int i = 0; i < passwords.Count; i++) 
+                    {
+                        if(passwords[i] == user.Password)
+                        {
+                            success = true;
+                        }
+                        //success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
+                    }
+                */
+                }
+                  
+                return success;
         }
 
         public void Delete(int Id)
