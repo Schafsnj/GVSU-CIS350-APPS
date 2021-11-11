@@ -198,10 +198,10 @@ namespace APPS_Web_APP.Services
         //Gets salt from username to checkpasswords
         public string getSalt(string user)
         {
-            string sqlStatement = "SELECT SALT FROM dbo.Users WHERE USERNAME = @username";
-            
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
+            User gettingSalt = new User();
 
-        
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -218,11 +218,18 @@ namespace APPS_Web_APP.Services
                     while (reads.Read())
                     {
 
-                       string salt = (string)reads[7];
-                        return salt;
+                        gettingSalt = new User
+                        {
+                            Id = (int)reads[0],
+                            UserName = (string)reads[1],
+                            Password = (string)reads[2],
+                            Email = (string)reads[3],
+                            FirstName = (string)reads[4],
+                            LastName = (string)reads[5],
+                            Salt = (string)reads[7]
+                        };
 
                     }
-                
                 }
                 catch (Exception e)
                 {
@@ -230,8 +237,8 @@ namespace APPS_Web_APP.Services
                 }
 
             }
-            return ("");
-            
+
+            return gettingSalt.Salt;
         }
     }
 }
