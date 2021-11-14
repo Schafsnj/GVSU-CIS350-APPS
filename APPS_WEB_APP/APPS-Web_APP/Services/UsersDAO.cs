@@ -47,7 +47,7 @@ namespace APPS_Web_APP.Services
 
                         while(reads.HasRows && reads.Read())
                         {
-                            if(passwords == null) //Initializing list of salts and usernames
+                            if(passwords == null) //Initializing list of password
                             {
                                 passwords = new List<String>();
                             }
