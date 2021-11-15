@@ -128,7 +128,7 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
-                connection.Close();
+                connection.Close(); 
             }
         }
 
