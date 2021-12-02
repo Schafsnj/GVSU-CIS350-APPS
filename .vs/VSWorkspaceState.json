@@ -8,6 +8,6 @@
     "\\APPS_WEB_APP\\APPS-Web_APP\\Views",
     "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager\\Index.cshtml",
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Services\\UsersDAO.cs",
   "PreviewInSolutionExplorer": false
 }
