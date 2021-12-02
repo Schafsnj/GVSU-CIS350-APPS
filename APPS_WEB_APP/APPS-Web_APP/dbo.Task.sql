@@ -5,5 +5,6 @@
     [COMPANY]  NCHAR (100) NULL,
     [CONTACT]  NCHAR (40)  NULL,
     [EMAIL]    NCHAR (40)  NULL,
+    
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
