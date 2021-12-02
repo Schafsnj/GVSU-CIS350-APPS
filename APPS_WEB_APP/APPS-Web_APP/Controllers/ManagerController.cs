@@ -14,20 +14,20 @@ namespace APPS_Web_APP.Controllers
     public class ManagerController : Controller
     {
         [HttpGet]
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult Index()
         {
                 return View();
         }
 
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult EditEmployees()
         {
             UsersDAO employees = new UsersDAO();
             return View(employees.GetAllEmployees());
         }
 
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult ViewTask()
         {
             TaskDAO tasks = new TaskDAO();
@@ -42,7 +42,7 @@ namespace APPS_Web_APP.Controllers
             return View();
         }
 
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult CreateTask()
         {
 
@@ -58,7 +58,7 @@ namespace APPS_Web_APP.Controllers
             return View("AddAccount", usermodel); 
         }
 
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult AddTask(Task task)
         {
             TaskDAO tasks = new TaskDAO();
@@ -66,7 +66,7 @@ namespace APPS_Web_APP.Controllers
 
             return View("AddTask", task);
         }
-        [CustomAuthorization]
+        // [CustomAuthorization]
         public IActionResult Delete(int Id)
         {
             UsersDAO user = new UsersDAO();
