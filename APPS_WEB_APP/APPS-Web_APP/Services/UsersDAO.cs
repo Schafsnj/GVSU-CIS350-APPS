@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Web.Helpers;
 
 namespace APPS_Web_APP.Services
 {
@@ -11,42 +13,65 @@ namespace APPS_Web_APP.Services
     {
         string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         User account = new User();
+
+
         
 
         public bool FindUserByNameAndPassword(User user)
         {
 
-            bool success = false;
 
-            
-            //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE username = @username AND password = @password";
 
-            //Keeps it open only while using the database then closes it
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                //Creates the new command
-                SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+                user.UserName = user.UserName.ToLower();
+                bool success = false;
+                //Creating list to store user passwords
+                List<String> passwords = null;
 
-                //Checking to see if it worked
-                try
+
+                //statement to tell database what to do
+                string sqlStatement = "SELECT PASSWORD FROM dbo.Users WHERE USERNAME = @username";
+
+                //Keeps it open only while using the database then closes it
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-                    SqlDataReader reads = command.ExecuteReader();
+                    //Creates the new command
+                    SqlCommand command = new SqlCommand(sqlStatement, connection);
+                    command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
 
-                    if(reads.HasRows)
+
+                    //Checking to see if it worked
+                    try
                     {
-                        success = true;
+                        connection.Open();
+                        SqlDataReader reads = command.ExecuteReader();
+
+                        while(reads.HasRows && reads.Read())
+                        {
+                            if(passwords == null) //Initializing list of password
+                            {
+                                passwords = new List<String>();
+                            }
+
+                            String password = reads.GetString(reads.GetOrdinal("PASSWORD"));
+                            passwords.Add(password);
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        Console.Write(e.Message);
                     }
                 }
-                catch(Exception e)
+                if(passwords != null)
                 {
-                    Console.Write(e.Message);
+                    for(int i = 0; i < passwords.Count; i++) 
+                    {
+  
+                        success = Crypto.VerifyHashedPassword(passwords[i], user.Password);
+         
+                    }
                 }
-            }
-            return success;
+                  
+                return success;
         }
 
         public void Delete(int Id)
@@ -70,11 +95,15 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
             }
         }
 
         public void AddUser(User user)
         {
+     
+            user.Password = hashPass(user.Password);
+            user.UserName = user.UserName.ToLower();
             user.Role = 2;
             string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -83,11 +112,12 @@ namespace APPS_Web_APP.Services
 
                 //Adding parameter
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = user.Password;
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 100).Value = user.Email;
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
                 command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
+   
 
                 try
                 {
@@ -98,6 +128,7 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close(); 
             }
         }
 
@@ -132,7 +163,9 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
             }
+           
             return success;
         }
 
@@ -145,7 +178,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+       
                 //Checking to see if it worked
                 try
                 {
@@ -162,10 +195,22 @@ namespace APPS_Web_APP.Services
                 {
                     Console.Write(e.Message);
                 }
+                connection.Close();
 
             }
 
             return employees;
         }
+
+
+        //Generates SHA256 Hash
+        public string hashPass(string userPass)
+        {
+
+            string password = userPass;
+            string hashedPass = Crypto.HashPassword(password);
+            return hashedPass;
+        }
+
     }
 }

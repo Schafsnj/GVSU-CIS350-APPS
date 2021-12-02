@@ -36,5 +36,6 @@ namespace APPS_Web_APP.Models
 
 
         public int Role { get; set; }
+ 
     }
 }

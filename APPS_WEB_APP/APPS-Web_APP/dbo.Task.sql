@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Tasks] (
+    [Id]       INT         IDENTITY (1, 1) NOT NULL,
+    [TASKNAME] NCHAR (40)  NULL,
+    [TASKDESC] NCHAR (100) NULL,
+    [COMPANY]  NCHAR (100) NULL,
+    [CONTACT]  NCHAR (40)  NULL,
+    [EMAIL]    NCHAR (40)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
