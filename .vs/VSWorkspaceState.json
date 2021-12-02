@@ -4,8 +4,10 @@
     "\\APPS_WEB_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Services"
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Services",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Views",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Services\\UsersDAO.cs",
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
