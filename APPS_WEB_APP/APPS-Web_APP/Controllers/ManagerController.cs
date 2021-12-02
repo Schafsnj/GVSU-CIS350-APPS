@@ -42,7 +42,8 @@ namespace APPS_Web_APP.Controllers
             users.AddUser(usermodel);
 
 
-            return View("AddAccount", usermodel);
+            return View("AddAccount", usermodel); 
+       
 
  
         }
