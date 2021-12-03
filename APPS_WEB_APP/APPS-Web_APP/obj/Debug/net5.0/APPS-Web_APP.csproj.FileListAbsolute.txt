@@ -437,3 +437,4 @@ C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug
 C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Employee\Edit.cshtml.g.cs
 C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Employee\ViewTask.cshtml.g.cs
+C:\Users\sutto\Source\Repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\LoginController1\ChangePassword.cshtml.g.cs
