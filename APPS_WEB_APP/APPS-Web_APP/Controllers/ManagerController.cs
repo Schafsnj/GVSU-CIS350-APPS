@@ -45,17 +45,17 @@ namespace APPS_Web_APP.Controllers
         // [CustomAuthorization]
         public IActionResult CreateTask()
         {
-
             return View();
         }
 
         // [CustomAuthorization]
         public IActionResult AddAccount(User usermodel)
         {
+   
             UsersDAO users = new UsersDAO();
             users.AddUser(usermodel);
-
-            return View("AddAccount", usermodel); 
+            return View("AddAccount", usermodel);
+     
         }
 
         // [CustomAuthorization]

@@ -18,17 +18,25 @@ namespace APPS_Web_APP.Controllers
 
         public ActionResult ProcessLogin(User usermodel)
         {
-            SecurityService securityService = new SecurityService();
-            if(securityService.IsValid(usermodel))
+            UsersDAO userDB = new UsersDAO();
+            if(userDB.FindUserByNameAndPassword(usermodel))
             {
-                if(securityService.checkManager(usermodel))
+                if(userDB.checkManager(usermodel))
                 {
                     HttpContext.Session.SetString("username", usermodel.UserName);
                     return RedirectToAction("Index", "Manager");
                 }
                 else
                 {
-                    return View("Employee", usermodel);
+                    if(userDB.checkLoggedIn(usermodel))
+                    {
+                        return View("ChangePassword", usermodel);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Employee");
+                    }
+                    
                 }
 
             }
@@ -38,5 +46,17 @@ namespace APPS_Web_APP.Controllers
                 return View("LoginFailure", usermodel);
             }
         }
+        public ActionResult ChangePassword(User usermodel)
+        {
+            return View(usermodel);
+        }
+
+        public ActionResult SavePassword(User usermodel)
+        {
+            UsersDAO users = new UsersDAO();
+            users.changePassword(usermodel);
+            return RedirectToAction("Index", "Employee");
+        }
+        
     }
 }
