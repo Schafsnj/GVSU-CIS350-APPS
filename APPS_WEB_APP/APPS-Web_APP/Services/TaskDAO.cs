@@ -78,6 +78,31 @@ namespace APPS_Web_APP.Services
                 connection.Close();
             }
         }
+
+        public void DeleteTask(int Id)
+        {
+
+            string sqlStatement = "DELETE FROM dbo.Tasks WHERE Id = @Id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                //Adding parameter
+                command.Parameters.AddWithValue("@Id", Id);
+
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+            }
+        }
     }
 
 

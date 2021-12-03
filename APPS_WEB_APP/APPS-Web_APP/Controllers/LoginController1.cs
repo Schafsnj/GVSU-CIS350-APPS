@@ -22,7 +22,6 @@ namespace APPS_Web_APP.Controllers
             UsersDAO userDB = new UsersDAO();
             if(userDB.FindUserByNameAndPassword(usermodel))
             {
-
                 if(userDB.checkManager(usermodel) == true)
                 {
                     HttpContext.Session.SetString("username", usermodel.UserName);

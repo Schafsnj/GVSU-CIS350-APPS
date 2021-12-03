@@ -75,6 +75,30 @@ namespace APPS_Web_APP.Controllers
             return View("EditEmployees", user.GetAllEmployees());
         }
 
+        [CustomAuthorization]
+        public IActionResult DeleteTask(int Id)
+        {
+            TaskDAO task = new TaskDAO();
 
+            task.DeleteTask(Id);
+            return View("ViewTask", task.GetAllTasks());
+        }
+
+        [CustomAuthorization]
+        public IActionResult Edit(int Id)
+        {
+            UsersDAO user = new UsersDAO();
+            
+            return View(user.findUserById(Id));
+        }
+
+        [CustomAuthorization]
+        public IActionResult SaveEdit(User usermodel)
+        {
+            UsersDAO user = new UsersDAO();
+
+            user.SaveEdit(usermodel);
+            return View("EditEmployees", user.GetAllEmployees());
+        }
     }
 }
