@@ -141,24 +141,26 @@ namespace APPS_Web_APP.Services
 
 
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = @role AND USERNAME = @username";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
-
+               // command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
+                command.Parameters.AddWithValue("@username", user.UserName);
+                command.Parameters.AddWithValue("@role", 2);
                 //Checking to see if it worked
                 try
                 {
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    if (!reads.HasRows)
+                    if (!(reads.HasRows))
                     {
                         success = true;
+                        return success;
                     }
                 }
                 catch (Exception e)
@@ -225,8 +227,13 @@ namespace APPS_Web_APP.Services
 
                     while(reads.Read())
                     {
-                        employees.Add(new User { Id = (int)reads[0], UserName = (string)reads[1], Password = (string)reads[2], 
-                            Email = (string)reads[3], FirstName = (string)reads[4], LastName = (string)reads[5] });
+                        employees.Add(new User { 
+                            Id = (int)reads[0], 
+                            UserName = (string)reads[1], 
+                            Password = (string)reads[2], 
+                            Email = (string)reads[3], 
+                            FirstName = (string)reads[4], 
+                            LastName = (string)reads[5] });
                     }
                 }
                 catch (Exception e)
@@ -240,23 +247,61 @@ namespace APPS_Web_APP.Services
             return employees;
         }
 
-        public void changePassword(User usermodel)
+        public User findUser(User usermodel)
         {
-            usermodel.Password = hashPass(usermodel.Password);
-            string sqlStatement = "INSERT into dbo.Users(PASSWORD) values(@password) WHERE Id = @Id";
+            User user = new User();
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@username", usermodel.UserName);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if(reads.Read())
+                    { 
+                        user.Id = (int)reads[0];
+                        user.UserName = (string)reads[1];
+                        user.Password = (string)reads[2];
+                        user.Email = (string)reads[3];
+                        user.FirstName = (string)reads[4];
+                        user.LastName = (string)reads[5];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+
+            return user;
+        }
+
+        public void changePassword(User usermodel, string newPassword)
+        {
+            newPassword = hashPass(newPassword);
+            string sqlStatement = "UPDATE dbo.Users SET PASSWORD = @password, LOGGEDIN = @loggedin WHERE Id = @Id";
                
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = usermodel.Password;
-                command.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = usermodel.Id;
+                command.Parameters.AddWithValue("@password", newPassword);
+                command.Parameters.AddWithValue("@loggedin", 0);
+                command.Parameters.AddWithValue("@Id", usermodel.Id);
                 //Checking to see if it worked
                 try
                 {
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    command.ExecuteScalar();
 
                 }
                 catch (Exception e)

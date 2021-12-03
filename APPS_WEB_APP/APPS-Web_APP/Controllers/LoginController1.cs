@@ -18,10 +18,12 @@ namespace APPS_Web_APP.Controllers
 
         public ActionResult ProcessLogin(User usermodel)
         {
+ 
             UsersDAO userDB = new UsersDAO();
             if(userDB.FindUserByNameAndPassword(usermodel))
             {
-                if(userDB.checkManager(usermodel))
+
+                if(userDB.checkManager(usermodel) == true)
                 {
                     HttpContext.Session.SetString("username", usermodel.UserName);
                     return RedirectToAction("Index", "Manager");
@@ -40,11 +42,13 @@ namespace APPS_Web_APP.Controllers
                 }
 
             }
+
             else
             {
                 HttpContext.Session.Remove("username");
                 return View("LoginFailure", usermodel);
             }
+
         }
         public ActionResult ChangePassword(User usermodel)
         {
@@ -53,8 +57,11 @@ namespace APPS_Web_APP.Controllers
 
         public ActionResult SavePassword(User usermodel)
         {
+            string newPassword = usermodel.Password;
             UsersDAO users = new UsersDAO();
-            users.changePassword(usermodel);
+            User foundUser = new User();
+            foundUser = users.findUser(usermodel);
+            users.changePassword(foundUser, newPassword);
             return RedirectToAction("Index", "Employee");
         }
         
