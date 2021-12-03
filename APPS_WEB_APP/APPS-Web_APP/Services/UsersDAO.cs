@@ -105,7 +105,8 @@ namespace APPS_Web_APP.Services
             user.Password = hashPass(user.Password);
             user.UserName = user.UserName.ToLower();
             user.Role = 2;
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
+            user.LoggedIn = 1;
+            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE, LOGGEDIN) values(@username, @password, @email, @firstname, @lastname, @role, @loggedin)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -117,7 +118,8 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@firstname", System.Data.SqlDbType.VarChar, 40).Value = user.FirstName;
                 command.Parameters.Add("@lastname", System.Data.SqlDbType.VarChar, 40).Value = user.LastName;
                 command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = user.Role;
-   
+                command.Parameters.Add("@loggedin", System.Data.SqlDbType.Int).Value = user.LoggedIn;
+
 
                 try
                 {
@@ -139,14 +141,50 @@ namespace APPS_Web_APP.Services
 
 
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE role = @role";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
+
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if (!reads.HasRows)
+                    {
+                        success = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+            }
+           
+            return success;
+        }
+        public bool checkLoggedIn(User user)
+        {
+
+            bool success = false;
+
+
+            //statement to tell database what to do
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE LOGGEDIN = 1";
+
+            //Keeps it open only while using the database then closes it
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+               // command.Parameters.Add("@loggedin", System.Data.SqlDbType.Int).Value = 1;
 
                 //Checking to see if it worked
                 try
@@ -165,7 +203,7 @@ namespace APPS_Web_APP.Services
                 }
                 connection.Close();
             }
-           
+
             return success;
         }
 
@@ -200,6 +238,34 @@ namespace APPS_Web_APP.Services
             }
 
             return employees;
+        }
+
+        public void changePassword(User usermodel)
+        {
+            usermodel.Password = hashPass(usermodel.Password);
+            string sqlStatement = "INSERT into dbo.Users(PASSWORD) values(@password) WHERE Id = @Id";
+               
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = usermodel.Password;
+                command.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = usermodel.Id;
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
         }
 
 

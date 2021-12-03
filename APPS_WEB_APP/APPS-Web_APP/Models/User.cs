@@ -34,8 +34,15 @@ namespace APPS_Web_APP.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required]
+        [DisplayName("Confirm Password")]
+        [Compare("Password", ErrorMessage = "Passwords do not match!")]
+        public string PasswordMatch { get; set; }
+
+
 
         public int Role { get; set; }
- 
+        public int LoggedIn { get; set; }
+
     }
 }
