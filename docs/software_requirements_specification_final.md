@@ -67,6 +67,11 @@ Individual software requirements are organized and grouped into several categori
 
 This section includes links to the various software artifacts that we developed during the design process of the application.
 
+## Project Planning
+
+- [Project Proposal](https://github.com/Schafsnj/GVSU-CIS350-APPS/blob/b0d67a1181943dc9173b775eed8fb7815d116e95/docs/proposal-template.md)
+- [Project Gantt Chart](https://github.com/Schafsnj/GVSU-CIS350-APPS/blob/b0d67a1181943dc9173b775eed8fb7815d116e95/docs/CIS%20350%20-%20Gantt%20Chart%20-%20Gantt%20Chart%20(1).pdf)
+
 ## Use-Case Diagrams/Descriptions
 
 - [Account Management UML Diagram](https://github.com/Schafsnj/GVSU-CIS350-APPS/blob/f58af4c91d39a2bf532b801914b8e2b04155bed3/artifacts/use_case_diagrams/AccountManagementUML.drawio.pdf)
