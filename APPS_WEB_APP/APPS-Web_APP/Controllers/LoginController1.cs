@@ -53,8 +53,11 @@ namespace APPS_Web_APP.Controllers
 
         public ActionResult SavePassword(User usermodel)
         {
+            string newPassword = usermodel.Password;
             UsersDAO users = new UsersDAO();
-            users.changePassword(usermodel);
+            User foundUser = new User();
+            foundUser = users.findUser(usermodel);
+            users.changePassword(foundUser, newPassword);
             return RedirectToAction("Index", "Employee");
         }
         
