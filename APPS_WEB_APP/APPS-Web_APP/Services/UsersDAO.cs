@@ -104,15 +104,9 @@ namespace APPS_Web_APP.Services
      
             user.Password = hashPass(user.Password);
             user.UserName = user.UserName.ToLower();
-<<<<<<< HEAD
-            // change back to 2
-            user.Role = 1;
-            string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE) values(@username, @password, @email, @firstname, @lastname, @role)";
-=======
             user.Role = 2;
             user.LoggedIn = 1;
             string sqlStatement = "Insert into dbo.Users(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME, ROLE, LOGGEDIN) values(@username, @password, @email, @firstname, @lastname, @role, @loggedin)";
->>>>>>> 41a2ebb7cd1c51ada28ec8b18fed9a011611619f
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
