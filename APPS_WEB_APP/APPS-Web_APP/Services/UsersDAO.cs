@@ -141,24 +141,26 @@ namespace APPS_Web_APP.Services
 
 
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = 2";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE ROLE = @role AND USERNAME = @username";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                //command.Parameters.Add("@role", System.Data.SqlDbType.Int).Value = 1;
-
+               // command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 40).Value = user.UserName;
+                command.Parameters.AddWithValue("@username", user.UserName);
+                command.Parameters.AddWithValue("@role", 2);
                 //Checking to see if it worked
                 try
                 {
                     connection.Open();
                     SqlDataReader reads = command.ExecuteReader();
 
-                    if (!reads.HasRows)
+                    if (!(reads.HasRows))
                     {
                         success = true;
+                        return success;
                     }
                 }
                 catch (Exception e)
