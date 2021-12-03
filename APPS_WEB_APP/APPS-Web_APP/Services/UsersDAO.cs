@@ -243,20 +243,20 @@ namespace APPS_Web_APP.Services
         public void changePassword(User usermodel)
         {
             usermodel.Password = hashPass(usermodel.Password);
-            string sqlStatement = "INSERT into dbo.Users(PASSWORD) values(@password) WHERE Id = @Id";
+            string sqlStatement = "UPDATE dbo.Users SET PASSWORD = @password WHERE USERNAME = @UserName";
                
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 100).Value = usermodel.Password;
-                command.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = usermodel.Id;
+                command.Parameters.AddWithValue("@password", usermodel.Password);
+                command.Parameters.AddWithValue("@UserName", usermodel.UserName);
                 //Checking to see if it worked
                 try
                 {
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    command.ExecuteScalar();
 
                 }
                 catch (Exception e)
