@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using APPS_Web_APP.Data;
 
 namespace APPS_Web_APP
 {
@@ -33,6 +35,9 @@ namespace APPS_Web_APP
             });
 
             services.AddControllersWithViews();
+
+            services.AddDbContext<APPS_Web_APPContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("APPS_Web_APPContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
