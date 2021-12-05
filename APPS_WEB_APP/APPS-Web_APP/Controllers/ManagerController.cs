@@ -10,7 +10,7 @@ using Task = APPS_Web_APP.Models.Task;
 namespace APPS_Web_APP.Controllers
 {
 
-    
+     
     public class ManagerController : Controller
     {
         [HttpGet]
