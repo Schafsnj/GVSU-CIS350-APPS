@@ -3,17 +3,8 @@
     "",
     "\\APPS_WEB_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP",
-<<<<<<< HEAD
     "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers\\LoginController1.cs",
-=======
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Services",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Views",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager"
-  ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Services\\UsersDAO.cs",
->>>>>>> 7b04fa9413a900589badf70ae4b5f2f50ca05609
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers\\ManagerController.cs",
   "PreviewInSolutionExplorer": false
 }
