@@ -3,8 +3,9 @@
     "",
     "\\APPS_WEB_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\App_Data",
     "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers\\ManagerController.cs",
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\App_Data\\APPS-Project-Database.mdf",
   "PreviewInSolutionExplorer": false
 }
