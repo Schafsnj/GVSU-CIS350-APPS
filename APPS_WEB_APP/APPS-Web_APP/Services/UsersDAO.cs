@@ -233,7 +233,9 @@ namespace APPS_Web_APP.Services
                             Password = (string)reads[2], 
                             Email = (string)reads[3], 
                             FirstName = (string)reads[4], 
-                            LastName = (string)reads[5] });
+                            LastName = (string)reads[5],
+                            Role = (int)reads[6]
+                        });
                     }
                 }
                 catch (Exception e)
@@ -354,8 +356,7 @@ namespace APPS_Web_APP.Services
         public void SaveEdit(User usermodel)
         {
           
-            string sqlStatement = "UPDATE dbo.Users SET USERNAME = @username, FIRSTNAME = @firstname, EMAIL = @email, " +
-                "LASTNAME = @lastname, ROLE = @role WHERE Id = @Id";
+            string sqlStatement = "UPDATE dbo.Users SET USERNAME = @username, FIRSTNAME = @firstname, EMAIL = @email, LASTNAME = @lastname, ROLE = @role WHERE Id = @Id";
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))

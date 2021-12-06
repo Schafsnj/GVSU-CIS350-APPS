@@ -15,5 +15,7 @@ namespace APPS_Web_APP.Data
         }
 
         public DbSet<APPS_Web_APP.Models.User> User { get; set; }
+
+        public DbSet<APPS_Web_APP.Models.Task> Task { get; set; }
     }
 }

@@ -63,6 +63,20 @@ namespace APPS_Web_APP.Controllers
             users.changePassword(foundUser, newPassword);
             return RedirectToAction("Index", "Employee");
         }
-        
+
+        public ActionResult Logout()
+        {
+            if (HttpContext.Session.GetString("username") != null)
+            {
+                HttpContext.Session.Clear();
+                return View("Index");
+            }
+            else
+            {
+                return Content("You are not logged in!");
+            }
+            
+        }
+
     }
 }

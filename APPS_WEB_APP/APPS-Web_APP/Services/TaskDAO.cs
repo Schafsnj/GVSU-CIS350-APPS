@@ -103,6 +103,76 @@ namespace APPS_Web_APP.Services
                 connection.Close();
             }
         }
+
+        public void SaveEditTask(Task task)
+        {
+
+            string sqlStatement = "UPDATE dbo.Tasks SET TASKNAME = @taskname, TASKDESC = @taskdesc, COMPANY = @company, " +
+                "CONTACT = @contact, EMAIL = @email WHERE Id = @Id";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@taskname", task.TaskName);
+                command.Parameters.AddWithValue("@taskdesc", task.TaskDesc);
+                command.Parameters.AddWithValue("@company", task.Company);
+                command.Parameters.AddWithValue("@contact", task.Contact);
+                command.Parameters.AddWithValue("@email", task.Contact);
+                command.Parameters.AddWithValue("@Id", task.Id);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    command.ExecuteScalar();
+
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+        }
+
+        public Task findById(int Id)
+        {
+            Task task = new Task();
+            string sqlStatement = "SELECT * FROM dbo.Tasks WHERE Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@id", Id);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if (reads.Read())
+                    {
+                        task.Id = (int)reads[0];
+                        task.TaskName = (string)reads[1];
+                        task.TaskDesc = (string)reads[2];
+                        task.Company = (string)reads[3];
+                        task.Contact = (string)reads[4];
+                        task.Email = (string)reads[5];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+
+            return task;
+        }
     }
 
 

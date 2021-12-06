@@ -146,13 +146,10 @@ C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\LoginController1\ChangePassword.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\LoginController1\Index.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\LoginController1\LoginFailure.cshtml.g.cs
-C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\LoginController1\LoginSuccess.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\AddAccount.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\AddTask.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\Create.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\CreateTask.cshtml.g.cs
-C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\Edit.cshtml.g.cs
-C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\EditEmployees.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\Index.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\ViewTask.cshtml.g.cs
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -168,3 +165,7 @@ C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\APPS-Web_APP.pdb
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\APPS-Web_APP.genruntimeconfig.cache
 C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\APPS-Web_APP.csproj.CopyComplete
+C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\EditEmployees.cshtml.g.cs
+C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\APPS-Web_APP.csproj.AssemblyReference.cache
+C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\EditTask.cshtml.g.cs
+C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\obj\Debug\net5.0\Razor\Views\Manager\Edit.cshtml.g.cs

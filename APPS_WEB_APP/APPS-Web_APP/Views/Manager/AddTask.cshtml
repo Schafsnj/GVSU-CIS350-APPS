@@ -1,7 +1,7 @@
 ﻿@model APPS_Web_APP.Models.Task
 
 <div>
-    <h4>Task</h4>
+    <h4>Please Enter Task Information</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -37,6 +37,5 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="ViewTask">Back to List</a>
 </div>
