@@ -11,17 +11,11 @@ namespace APPS_Web_APP.Services
 {
     public class UsersDAO
     {
-        string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\App_Data\APPS-Project-Database.mdf;Integrated Security = True";
         User account = new User();
-
-
-        
 
         public bool FindUserByNameAndPassword(User user)
         {
-
-
-
                 user.UserName = user.UserName.ToLower();
                 bool success = false;
                 //Creating list to store user passwords

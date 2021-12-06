@@ -6,8 +6,7 @@ namespace APPS_Web_APP.Services
     public class LinkedDAO
     {
 
-        string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public void addAssigned(int userId, int taskId)
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\App_Data\APPS-Project-Database.mdf;Integrated Security = True"; public void addAssigned(int userId, int taskId)
         {
             string sqlStatement = "Insert into dbo.Linked(TASKID, USERID) values(@taskid, @userid)";
 
