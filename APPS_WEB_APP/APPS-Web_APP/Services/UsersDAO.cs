@@ -179,14 +179,14 @@ namespace APPS_Web_APP.Services
 
 
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE LOGGEDIN = 1";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE LOGGEDIN = 1 AND USERNAME = @username";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-               // command.Parameters.Add("@loggedin", System.Data.SqlDbType.Int).Value = 1;
+                command.Parameters.AddWithValue("@username", user.UserName);
 
                 //Checking to see if it worked
                 try
@@ -249,7 +249,7 @@ namespace APPS_Web_APP.Services
             return employees;
         }
 
-        public User findUser(User usermodel)
+        public User findUser(string username)
         {
             User user = new User();
             string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
@@ -258,7 +258,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.AddWithValue("@username", usermodel.UserName);
+                command.Parameters.AddWithValue("@username", username);
                 //Checking to see if it worked
                 try
                 {

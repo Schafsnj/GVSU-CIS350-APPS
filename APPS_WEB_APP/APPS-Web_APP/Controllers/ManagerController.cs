@@ -106,7 +106,6 @@ namespace APPS_Web_APP.Controllers
         public IActionResult EditTask(int Id)
         {
             TaskDAO task = new TaskDAO();
-
             return View(task.findById(Id));
         }
 
@@ -114,9 +113,27 @@ namespace APPS_Web_APP.Controllers
         public IActionResult SaveEditTask(Task task)
         {
             TaskDAO taskE = new TaskDAO();
-
             taskE.SaveEditTask(task);
             return View("ViewTask", taskE.GetAllTasks());
+        }
+
+        [CustomAuthorization]
+        public IActionResult Assign(int Id)
+        {
+            UsersDAO user = new UsersDAO();
+            ViewBag.TaskId = Id;
+            return View(user.GetAllEmployees());
+        }
+
+        [CustomAuthorization]
+        public IActionResult AssignTask(string username, int taskId)
+        {
+
+            TaskDAO task = new TaskDAO();
+            LinkedDAO assign = new LinkedDAO();
+            UsersDAO user = new UsersDAO();
+            assign.addAssigned(user.findUser(username).Id, taskId);
+            return View("Index");
         }
 
     }

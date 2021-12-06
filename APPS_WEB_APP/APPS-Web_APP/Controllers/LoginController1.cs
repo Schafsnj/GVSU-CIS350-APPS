@@ -59,7 +59,7 @@ namespace APPS_Web_APP.Controllers
             string newPassword = usermodel.Password;
             UsersDAO users = new UsersDAO();
             User foundUser = new User();
-            foundUser = users.findUser(usermodel);
+            foundUser = users.findUser(usermodel.UserName);
             users.changePassword(foundUser, newPassword);
             return RedirectToAction("Index", "Employee");
         }

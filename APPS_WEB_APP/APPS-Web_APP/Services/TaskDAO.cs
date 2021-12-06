@@ -36,7 +36,8 @@ namespace APPS_Web_APP.Services
                             TaskDesc = (string)reads[2],
                             Company = (string)reads[3],
                             Contact = (string)reads[4],
-                            Email = (string)reads[5]
+                            Email = (string)reads[5],
+                            Status = (string)reads[6]
                         });
                     }
                 }
@@ -53,8 +54,8 @@ namespace APPS_Web_APP.Services
 
         public void AddTask(Task task)
         {
-
-            string sqlStatement = "Insert into dbo.Tasks(TASKNAME, TASKDESC, COMPANY, CONTACT, EMAIL) values(@taskname, @taskdesc, @company, @contact, @email)";
+            task.Status = "Open";
+            string sqlStatement = "Insert into dbo.Tasks(TASKNAME, TASKDESC, COMPANY, CONTACT, EMAIL, STATUS) values(@taskname, @taskdesc, @company, @contact, @email, @status)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
@@ -65,6 +66,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.Add("@company", System.Data.SqlDbType.VarChar, 100).Value = task.Company;
                 command.Parameters.Add("@contact", System.Data.SqlDbType.VarChar, 40).Value = task.Contact;
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 40).Value = task.Email;
+                command.Parameters.Add("@status", System.Data.SqlDbType.VarChar, 40).Value = task.Status;
 
                 try
                 {
@@ -161,6 +163,7 @@ namespace APPS_Web_APP.Services
                         task.Company = (string)reads[3];
                         task.Contact = (string)reads[4];
                         task.Email = (string)reads[5];
+                        task.Status = (string)reads[6];
                     }
                 }
                 catch (Exception e)
