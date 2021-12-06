@@ -54,8 +54,8 @@ namespace APPS_Web_APP.Controllers
    
             UsersDAO users = new UsersDAO();
             users.AddUser(usermodel);
-            return View("AddAccount", usermodel);
-     
+            return View("EditEmployees", users.GetAllEmployees());
+
         }
 
         [CustomAuthorization]
