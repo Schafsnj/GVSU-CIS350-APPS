@@ -15,7 +15,10 @@ This project is a prototype web app meant to be used by a business. The app has 
 
 ## Run Instructions
 
-1. Open up Visual Studio and clone the project repository
-2. In the bottom right, make sure you are on the "Solution Explorer" tab
-3. Open up the "APPS-Web_APP.sln" found in the "APPS-Web_APP" folder
-4. Near the top of the screen, click on the "IIS Express" button that has a green play button next to it to launch the app
+1. Clone the repository from Visual Studio
+2. In VS, on the “Solution Explorer” tab, open up the “APP-Web_APP.sln” found in the “APP-Web_APP” folder
+3. On the “Solution Explorer” tab, open “App-Data” and double click on the .mdf file to open it in the “Server Explorer”.
+4. On the “Server Explorer” tab, right click on “APPS-Project-Database.mdf and select properties. 
+5. In the “Properties” tab, copy the entire Connection String. 
+6. Past that string as follows @“inserthere“ in the connectionString variable at the top of the following files in the Services folder in the file explorer: LinkedDAO.cs, TaskDAO.cs, & UsersDAO.cs
+7. Click on the “IIS Express” button to launch the app (next to green play button)
