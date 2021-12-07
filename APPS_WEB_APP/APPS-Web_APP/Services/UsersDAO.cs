@@ -11,17 +11,11 @@ namespace APPS_Web_APP.Services
 {
     public class UsersDAO
     {
-        string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=APPS-Project-Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\App_Data\APPS-Project-Database.mdf;Integrated Security = True";
         User account = new User();
-
-
-        
 
         public bool FindUserByNameAndPassword(User user)
         {
-
-
-
                 user.UserName = user.UserName.ToLower();
                 bool success = false;
                 //Creating list to store user passwords
@@ -179,14 +173,14 @@ namespace APPS_Web_APP.Services
 
 
             //statement to tell database what to do
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE LOGGEDIN = 1";
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE LOGGEDIN = 1 AND USERNAME = @username";
 
             //Keeps it open only while using the database then closes it
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-               // command.Parameters.Add("@loggedin", System.Data.SqlDbType.Int).Value = 1;
+                command.Parameters.AddWithValue("@username", user.UserName);
 
                 //Checking to see if it worked
                 try
@@ -233,7 +227,9 @@ namespace APPS_Web_APP.Services
                             Password = (string)reads[2], 
                             Email = (string)reads[3], 
                             FirstName = (string)reads[4], 
-                            LastName = (string)reads[5] });
+                            LastName = (string)reads[5],
+                            Role = (int)reads[6]
+                        });
                     }
                 }
                 catch (Exception e)
@@ -247,7 +243,7 @@ namespace APPS_Web_APP.Services
             return employees;
         }
 
-        public User findUser(User usermodel)
+        public User findUser(string username)
         {
             User user = new User();
             string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
@@ -256,7 +252,7 @@ namespace APPS_Web_APP.Services
             {
                 //Creates the new command
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
-                command.Parameters.AddWithValue("@username", usermodel.UserName);
+                command.Parameters.AddWithValue("@username", username);
                 //Checking to see if it worked
                 try
                 {
@@ -284,6 +280,44 @@ namespace APPS_Web_APP.Services
             return user;
         }
 
+        public User findUserById(int Id)
+        {
+            User user = new User();
+            string sqlStatement = "SELECT * FROM dbo.Users WHERE Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@id", Id);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    if (reads.Read())
+                    {
+                        user.Id = (int)reads[0];
+                        user.UserName = (string)reads[1];
+                        user.Password = (string)reads[2];
+                        user.Email = (string)reads[3];
+                        user.FirstName = (string)reads[4];
+                        user.LastName = (string)reads[5];
+                        user.Role = (int)reads[6];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+
+            return user;
+        }
+
         public void changePassword(User usermodel, string newPassword)
         {
             newPassword = hashPass(newPassword);
@@ -296,6 +330,38 @@ namespace APPS_Web_APP.Services
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
                 command.Parameters.AddWithValue("@password", newPassword);
                 command.Parameters.AddWithValue("@loggedin", 0);
+                command.Parameters.AddWithValue("@Id", usermodel.Id);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    command.ExecuteScalar();
+
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+        }
+
+        public void SaveEdit(User usermodel)
+        {
+          
+            string sqlStatement = "UPDATE dbo.Users SET USERNAME = @username, FIRSTNAME = @firstname, EMAIL = @email, LASTNAME = @lastname, ROLE = @role WHERE Id = @Id";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@username", usermodel.UserName);
+                command.Parameters.AddWithValue("@firstname", usermodel.FirstName);
+                command.Parameters.AddWithValue("@lastname", usermodel.LastName);
+                command.Parameters.AddWithValue("@email", usermodel.Email);
+                command.Parameters.AddWithValue("@role", usermodel.Role);
                 command.Parameters.AddWithValue("@Id", usermodel.Id);
                 //Checking to see if it worked
                 try

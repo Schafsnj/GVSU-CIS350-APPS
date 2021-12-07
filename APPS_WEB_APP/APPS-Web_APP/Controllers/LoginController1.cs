@@ -22,7 +22,6 @@ namespace APPS_Web_APP.Controllers
             UsersDAO userDB = new UsersDAO();
             if(userDB.FindUserByNameAndPassword(usermodel))
             {
-
                 if(userDB.checkManager(usermodel) == true)
                 {
                     HttpContext.Session.SetString("username", usermodel.UserName);
@@ -36,6 +35,7 @@ namespace APPS_Web_APP.Controllers
                     }
                     else
                     {
+                        HttpContext.Session.SetString("username", usermodel.UserName);
                         return RedirectToAction("Index", "Employee");
                     }
                     
@@ -60,10 +60,25 @@ namespace APPS_Web_APP.Controllers
             string newPassword = usermodel.Password;
             UsersDAO users = new UsersDAO();
             User foundUser = new User();
-            foundUser = users.findUser(usermodel);
+            foundUser = users.findUser(usermodel.UserName);
             users.changePassword(foundUser, newPassword);
+            HttpContext.Session.SetString("username", usermodel.UserName);
             return RedirectToAction("Index", "Employee");
         }
-        
+
+        public ActionResult Logout()
+        {
+            if (HttpContext.Session.GetString("username") != null)
+            {
+                HttpContext.Session.Clear();
+                return View("Index");
+            }
+            else
+            {
+                return Content("You are not logged in!");
+            }
+            
+        }
+
     }
 }

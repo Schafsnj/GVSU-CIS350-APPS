@@ -10,6 +10,7 @@ namespace APPS_Web_APP.Models
     public class Task
     {
         public int Id { get; set; }
+        
 
         [Required]
         [StringLength(40, MinimumLength = 4)]
@@ -34,5 +35,6 @@ namespace APPS_Web_APP.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        public string Status { get; set; }
     }
 }
