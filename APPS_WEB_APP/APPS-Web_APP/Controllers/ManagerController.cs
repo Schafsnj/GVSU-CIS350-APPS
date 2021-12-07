@@ -80,8 +80,10 @@ namespace APPS_Web_APP.Controllers
         public IActionResult DeleteTask(int Id)
         {
             TaskDAO task = new TaskDAO();
+            LinkedDAO link = new LinkedDAO();
 
             task.DeleteTask(Id);
+            link.DeleteTask(Id);
             return View("ViewTask", task.GetAllTasks());
         }
 
@@ -134,6 +136,14 @@ namespace APPS_Web_APP.Controllers
             UsersDAO user = new UsersDAO();
             assign.addAssigned(user.findUser(username).Id, taskId);
             return View("Index");
+        }
+
+        [CustomAuthorization]
+        public IActionResult Details(int Id)
+        {
+
+            TaskDAO task = new TaskDAO();
+            return View(task.findById(Id));
         }
 
     }

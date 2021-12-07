@@ -35,6 +35,7 @@ namespace APPS_Web_APP.Controllers
                     }
                     else
                     {
+                        HttpContext.Session.SetString("username", usermodel.UserName);
                         return RedirectToAction("Index", "Employee");
                     }
                     
@@ -61,6 +62,7 @@ namespace APPS_Web_APP.Controllers
             User foundUser = new User();
             foundUser = users.findUser(usermodel.UserName);
             users.changePassword(foundUser, newPassword);
+            HttpContext.Session.SetString("username", usermodel.UserName);
             return RedirectToAction("Index", "Employee");
         }
 

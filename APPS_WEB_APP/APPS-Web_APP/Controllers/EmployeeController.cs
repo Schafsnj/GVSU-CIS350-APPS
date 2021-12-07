@@ -8,33 +8,39 @@ using Microsoft.EntityFrameworkCore;
 using APPS_Web_APP.Data;
 using APPS_Web_APP.Models;
 using APPS_Web_APP.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace APPS_Web_APP.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly APPS_Web_APPContext _context;
 
-        public EmployeeController(APPS_Web_APPContext context)
+        public IActionResult Index()
         {
-            _context = context;
-        }
-
-        // GET: Employee
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.User.ToListAsync());
+            return View();
         }
 
         public IActionResult ViewTask()
         {
             TaskDAO tasks = new TaskDAO();
-            return View(tasks.GetAllTasks());
+            LinkedDAO link = new LinkedDAO();
+            UsersDAO user = new UsersDAO();
+            return View(tasks.GetAllTasksAssigned(link.getAssigned(user.findUser(HttpContext.Session.GetString("username")))));
+        }
+        public IActionResult Details(int Id)
+        {
+            TaskDAO tasks = new TaskDAO();
+            return View(tasks.findById(Id));
         }
 
-        private bool UserExists(int id)
+        public IActionResult Complete(int Id)
         {
-            return _context.User.Any(e => e.Id == id);
+            TaskDAO tasks = new TaskDAO();
+            LinkedDAO link = new LinkedDAO();
+            UsersDAO user = new UsersDAO();
+            tasks.updateStatus(Id);
+            link.remove(Id, user.findUser(HttpContext.Session.GetString("username")));
+            return View("ViewTask", tasks.GetAllTasksAssigned(link.getAssigned(user.findUser(HttpContext.Session.GetString("username")))));
         }
     }
 }

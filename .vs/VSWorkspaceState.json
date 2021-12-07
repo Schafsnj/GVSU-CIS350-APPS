@@ -4,8 +4,10 @@
     "\\APPS_WEB_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP",
     "\\APPS_WEB_APP\\APPS-Web_APP\\App_Data",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers"
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Models",
+    "\\APPS_WEB_APP\\APPS-Web_APP\\Services"
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\App_Data\\APPS-Project-Database.mdf",
+  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.sln",
   "PreviewInSolutionExplorer": false
 }

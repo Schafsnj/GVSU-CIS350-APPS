@@ -175,6 +175,102 @@ namespace APPS_Web_APP.Services
 
             return task;
         }
+
+        public List<Task> GetAllTasksAssigned(List<Linked> assigned)
+        {
+            List<Task> tasks = new List<Task>();
+            Task task = new Task();
+
+            //statement to tell database what to do
+            string sqlStatement = "SELECT * FROM dbo.Tasks";
+
+            //Keeps it open only while using the database then closes it
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reads = command.ExecuteReader();
+
+                    while (reads.HasRows && reads.Read())
+                    {
+                        
+                        task.Id = (int)reads[0];
+                        task.TaskName = (string)reads[1];
+                        task.TaskDesc = (string)reads[2];
+                        task.Company = (string)reads[3];
+                        task.Contact = (string)reads[4];
+                        task.Email = (string)reads[5];
+                        task.Status = (string)reads[6];
+                        tasks.Add(task);
+                        task = new Task();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+            }
+            if (tasks != null)
+            {
+                for (int i = 0; i < tasks.Count; i++)
+                {
+
+                    if(inTask(tasks[i].Id, assigned) == false)
+                    {
+                        tasks.RemoveAt(i);
+                    }
+
+                }
+            }
+
+            return tasks;
+        }
+
+        private bool inTask(int id, List<Linked> assigned)
+        {
+            for(int i = 0; i < assigned.Count; i++)
+            {
+                if(id == assigned[i].taskId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void updateStatus(int Id)
+        {
+
+            string sqlStatement = "UPDATE dbo.Tasks SET STATUS = @status WHERE Id = @Id";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //Creates the new command
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+                command.Parameters.AddWithValue("@status", "Completed");
+                command.Parameters.AddWithValue("@Id", Id);
+                //Checking to see if it worked
+                try
+                {
+                    connection.Open();
+                    command.ExecuteScalar();
+
+                }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
+                connection.Close();
+
+            }
+        }
     }
 
 
