@@ -61,7 +61,7 @@ namespace APPS_Web_APP.Services
 
                 //Adding parameter
                 command.Parameters.Add("@taskname", System.Data.SqlDbType.VarChar, 40).Value = task.TaskName;
-                command.Parameters.Add("@taskdesc", System.Data.SqlDbType.VarChar, 100).Value = task.TaskName;
+                command.Parameters.Add("@taskdesc", System.Data.SqlDbType.VarChar, 100).Value = task.TaskDesc;
                 command.Parameters.Add("@company", System.Data.SqlDbType.VarChar, 100).Value = task.Company;
                 command.Parameters.Add("@contact", System.Data.SqlDbType.VarChar, 40).Value = task.Contact;
                 command.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 40).Value = task.Email;

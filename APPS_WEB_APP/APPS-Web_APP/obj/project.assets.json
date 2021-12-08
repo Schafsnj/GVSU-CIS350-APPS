@@ -7441,24 +7441,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sutto\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Jayden\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sutto\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
+      "projectUniqueName": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
       "projectName": "APPS-Web_APP",
-      "projectPath": "C:\\Users\\sutto\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
-      "packagesPath": "C:\\Users\\sutto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sutto\\Source\\Repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\obj\\",
+      "projectPath": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
+      "packagesPath": "C:\\Users\\Jayden\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\sutto\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Jayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7525,7 +7520,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   },
