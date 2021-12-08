@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\APPS_WEB_APP",
-    "\\APPS_WEB_APP\\APPS-Web_APP",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Controllers",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Services",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Views",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Employee",
-    "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Manager"
+    ""
   ],
-  "SelectedNode": "\\APPS_WEB_APP\\APPS-Web_APP\\Views\\Employee\\ViewTask.cshtml",
+  "SelectedNode": "\\APPS-Web_APP.sln",
   "PreviewInSolutionExplorer": false
 }

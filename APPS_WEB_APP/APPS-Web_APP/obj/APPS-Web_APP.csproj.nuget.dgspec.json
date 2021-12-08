@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {}
+    "C:\\Users\\Nancy\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {
+    "C:\\Users\\Nancy\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
+        "projectUniqueName": "C:\\Users\\Nancy\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
         "projectName": "APPS-Web_APP",
-        "projectPath": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
-        "packagesPath": "C:\\Users\\Jayden\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jayden\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\obj\\",
+        "projectPath": "C:\\Users\\Nancy\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\APPS-Web_APP.csproj",
+        "packagesPath": "C:\\Users\\Nancy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nancy\\source\\repos\\GVSU-CIS350-APPS\\APPS_WEB_APP\\APPS-Web_APP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nancy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

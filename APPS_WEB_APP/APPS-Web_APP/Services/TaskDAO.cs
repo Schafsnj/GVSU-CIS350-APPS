@@ -9,7 +9,7 @@ namespace APPS_Web_APP.Services
 {
     public class TaskDAO
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jayden\Source\Repos\Schafsnj\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\App_Data\APPS-Project-Database.mdf;Integrated Security = True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nancy\source\repos\GVSU-CIS350-APPS\APPS_WEB_APP\APPS-Web_APP\App_Data\APPS-Project-Database.mdf;Integrated Security=True";
         public List<Task> GetAllTasks()
         {
             List<Task> tasks = new List<Task>();
@@ -120,7 +120,7 @@ namespace APPS_Web_APP.Services
                 command.Parameters.AddWithValue("@taskdesc", task.TaskDesc);
                 command.Parameters.AddWithValue("@company", task.Company);
                 command.Parameters.AddWithValue("@contact", task.Contact);
-                command.Parameters.AddWithValue("@email", task.Contact);
+                command.Parameters.AddWithValue("@email", task.Email);
                 command.Parameters.AddWithValue("@Id", task.Id);
                 //Checking to see if it worked
                 try
